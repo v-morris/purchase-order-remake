@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+} from "react-router-dom";
+import { PrivateRoute } from "./Authentication";
+
+// COMPONENTS
+import Login from "./components/Users/Login";
+
+import OptionsMain from "./components/OptionsMain";
+import UsersMain from "./components/Users/UsersMain";
+import ItemsMain from "./components/Items/ItemsMain";
+import OrdersMain from "./components/Orders/OrdersMain";
+
+import CreateOrder from "./components/Orders/CreateOrder";
+import ViewAllOrders from "./components/Orders/ViewAllOrders";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Route exact path="/" component={Login} />
+        <Route path="/options" component={OptionsMain} />
+        <Route path="/users" component={UsersMain} />
+        <Route path="/items" component={ItemsMain} />
+        <Route path="/orders" component={OrdersMain} />
+        <Route path="/neworder" component={CreateOrder} />
+        <Route path="/allorders" component={ViewAllOrders} />
+      </div>
+    </Router>
   );
 }
 
